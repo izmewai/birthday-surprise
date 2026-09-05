@@ -14,13 +14,14 @@
 }
 
 body{
-  font-family:Arial, "Myanmar Text", sans-serif;
+  font-family:Arial,"Myanmar Text",sans-serif;
   background:linear-gradient(135deg,#dff4ff,#b9e3ff,#eaf8ff);
   min-height:100vh;
   overflow-x:hidden;
   color:#174a6b;
 }
 
+/* OPENING */
 #opening{
   position:fixed;
   inset:0;
@@ -41,8 +42,8 @@ body{
   border:none;
   background:white;
   color:#2878a8;
-  padding:22px 35px;
-  font-size:22px;
+  padding:22px 30px;
+  font-size:21px;
   border-radius:50px;
   box-shadow:0 10px 30px rgba(0,100,180,.2);
   cursor:pointer;
@@ -55,19 +56,22 @@ body{
   100%{transform:scale(1);}
 }
 
+/* MAIN */
 .container{
   display:none;
   min-height:100vh;
   text-align:center;
-  padding:45px 20px 80px;
+  padding:40px 18px 80px;
 }
 
+/* SPARKLES */
 .sparkle{
   position:fixed;
   color:white;
   font-size:20px;
   animation:float 5s infinite ease-in-out;
   opacity:.8;
+  z-index:1;
 }
 
 .s1{left:10%;top:20%;}
@@ -76,17 +80,22 @@ body{
 .s4{left:88%;top:70%;animation-delay:3s;}
 
 @keyframes float{
-  0%,100%{transform:translateY(0) rotate(0);}
-  50%{transform:translateY(-25px) rotate(20deg);}
+  0%,100%{
+    transform:translateY(0) rotate(0);
+  }
+  50%{
+    transform:translateY(-25px) rotate(20deg);
+  }
 }
 
+/* TITLE */
 .title{
   margin-top:10px;
   animation:fadeDown 1.5s ease;
 }
 
 .title h1{
-  font-size:38px;
+  font-size:36px;
   color:#2176a8;
 }
 
@@ -107,22 +116,40 @@ body{
   }
 }
 
-.photo-frame{
-  width:270px;
-  height:360px;
+/* PHOTOS */
+.photos{
+  max-width:900px;
   margin:35px auto;
-  padding:10px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:18px;
+  flex-wrap:wrap;
+}
+
+.photo-frame{
+  width:250px;
+  height:320px;
+  padding:8px;
   background:white;
-  border-radius:25px;
+  border-radius:22px;
   box-shadow:0 15px 35px rgba(32,110,160,.25);
   animation:photoFloat 3s ease-in-out infinite;
+}
+
+.photo-frame:nth-child(2){
+  animation-delay:.7s;
+}
+
+.photo-frame:nth-child(3){
+  animation-delay:1.4s;
 }
 
 .photo-frame img{
   width:100%;
   height:100%;
   object-fit:cover;
-  border-radius:18px;
+  border-radius:16px;
 }
 
 @keyframes photoFloat{
@@ -130,14 +157,15 @@ body{
     transform:translateY(0) rotate(-1deg);
   }
   50%{
-    transform:translateY(-15px) rotate(1deg);
+    transform:translateY(-14px) rotate(1deg);
   }
 }
 
+/* LETTER */
 .letter{
-  max-width:650px;
-  margin:30px auto;
-  background:rgba(255,255,255,.75);
+  max-width:680px;
+  margin:35px auto;
+  background:rgba(255,255,255,.78);
   backdrop-filter:blur(10px);
   padding:30px 25px;
   border-radius:25px;
@@ -145,14 +173,16 @@ body{
   text-align:left;
   line-height:2;
   font-size:17px;
-  animation:letterShow 2s ease;
+
+  animation:letterShow 2.2s ease;
 }
 
 @keyframes letterShow{
   from{
     opacity:0;
-    transform:translateY(-50px);
+    transform:translateY(-90px);
   }
+
   to{
     opacity:1;
     transform:translateY(0);
@@ -179,11 +209,13 @@ body{
   line-height:2;
 }
 
+/* HEARTS */
 .heart{
   position:fixed;
   font-size:25px;
   animation:heartFloat 6s linear infinite;
   opacity:.7;
+  z-index:2;
 }
 
 @keyframes heartFloat{
@@ -191,7 +223,11 @@ body{
     transform:translateY(100vh);
     opacity:0;
   }
-  20%{opacity:.8;}
+
+  20%{
+    opacity:.8;
+  }
+
   to{
     transform:translateY(-100px) rotate(360deg);
     opacity:0;
@@ -203,157 +239,335 @@ body{
   font-size:15px;
   color:#4286ad;
 }
+
+/* MOBILE */
+@media(max-width:700px){
+
+  .open-btn{
+    font-size:18px;
+    padding:19px 24px;
+  }
+
+  .title h1{
+    font-size:30px;
+  }
+
+  .title h2{
+    font-size:22px;
+  }
+
+  .photos{
+    gap:14px;
+  }
+
+  .photo-frame{
+    width:28vw;
+    min-width:100px;
+    height:150px;
+    padding:5px;
+    border-radius:15px;
+  }
+
+  .photo-frame img{
+    border-radius:11px;
+  }
+
+  .letter{
+    padding:24px 19px;
+    font-size:16px;
+  }
+
+  .letter h3{
+    font-size:22px;
+  }
+
+}
 </style>
 </head>
 
 <body>
 
+<!-- OPENING -->
 <div id="opening">
+
   <div class="open-box">
+
     <button class="open-btn" onclick="openSurprise()">
       💌 ကဲ ဒီစာကိုနှိပ်လိုက်နော် ချစ်မမ 💙
     </button>
+
   </div>
+
 </div>
 
+
+<!-- MAIN -->
 <div class="container" id="main">
 
-<div class="sparkle s1">✦</div>
-<div class="sparkle s2">✧</div>
-<div class="sparkle s3">✦</div>
-<div class="sparkle s4">✧</div>
+  <div class="sparkle s1">✦</div>
+  <div class="sparkle s2">✧</div>
+  <div class="sparkle s3">✦</div>
+  <div class="sparkle s4">✧</div>
 
-<div class="title">
-  <h1>🎂 Happy Birthday 🎂</h1>
-  <h2>💙 မမငွေခင် 💙</h2>
+
+  <!-- TITLE -->
+  <div class="title">
+
+    <h1>🎂 Happy Birthday 🎂</h1>
+
+    <h2>💙 မမငွေခင် 💙</h2>
+
+  </div>
+
+
+  <!-- 3 PHOTOS -->
+  <div class="photos">
+
+    <div class="photo-frame">
+      <img
+        src="Screenshot_2026-09-05-19-57-18-784_org.telegram.messenger-edit.jpg"
+        alt="မမငွေခင်"
+      >
+    </div>
+
+    <div class="photo-frame">
+      <img
+        src="Screenshot_2026-09-05-19-57-27-273_org.telegram.messenger-edit.jpg"
+        alt="မမငွေခင်"
+      >
+    </div>
+
+    <div class="photo-frame">
+      <img
+        src="Screenshot_2026-09-05-19-57-36-872_org.telegram.messenger-edit.jpg"
+        alt="မမငွေခင်"
+      >
+    </div>
+
+  </div>
+
+
+  <!-- BIRTHDAY LETTER -->
+  <div class="letter">
+
+    <h3>💌 ချစ်ရတဲ့ မမငွေခင်သို့ 💌</h3>
+
+    <p>
+      ဒီနေ့ဟာ မမငွေခင်အတွက် အရမ်းထူးခြားပြီး
+      ပျော်ရွှင်စရာကောင်းတဲ့နေ့လေးတစ်နေ့ပါ။
+      ဒီကမ္ဘာကြီးထဲကို မမငွေခင်ဆိုတဲ့
+      လူတစ်ယောက် ရောက်ရှိလာခဲ့တဲ့
+      အမှတ်တရနေ့လေးလည်း ဖြစ်ပါတယ်။
+    </p>
+
+    <p>
+      ဒီမွေးနေ့ကစပြီး မမရဲ့ဘဝမှာ
+      ပျော်ရွှင်ခြင်းတွေ ပိုများလာပါစေ။
+      စိတ်ညစ်စရာတွေ၊ ဝမ်းနည်းစရာတွေကလည်း
+      တဖြည်းဖြည်းဝေးကွာသွားပြီး
+      မမပြုံးတဲ့အချိန်တိုင်း
+      စစ်မှန်တဲ့ပျော်ရွှင်မှုတွေနဲ့
+      ပြုံးနိုင်ပါစေ။
+    </p>
+
+    <p>
+      မမလိုချင်တဲ့ အိပ်မက်တွေ အကောင်အထည်ဖော်နိုင်ပါစေ။
+      ရည်မှန်းထားတဲ့လမ်းကြောင်းတိုင်းမှာ
+      အခက်အခဲတွေရှိလာရင်တောင်
+      အရှုံးမပေးဘဲ ရဲရဲဝံ့ဝံ့
+      ကျော်ဖြတ်နိုင်တဲ့ အားအင်တွေ
+      အမြဲတမ်းရှိနေပါစေ။
+    </p>
+
+    <p>
+      ဒီနှစ်မှာ မမအတွက် အမှတ်တရကောင်းတွေ
+      ပိုများလာပါစေ။
+      မမျှော်လင့်ထားတဲ့ ပျော်ရွှင်မှုလေးတွေကိုလည်း
+      နေ့တိုင်းလိုလို ကြုံတွေ့ရပါစေ။
+      မမချစ်တဲ့သူတွေက မမဘေးနားမှာ
+      အမြဲရှိနေပြီး
+      မမကို တန်ဖိုးထားချစ်ခင်ပေးတဲ့
+      လူကောင်းတွေနဲ့သာ တွေ့ဆုံနိုင်ပါစေ။
+    </p>
+
+    <p>
+      တစ်ခါတစ်လေ ဘဝမှာ ပင်ပန်းရတဲ့နေ့တွေရှိနိုင်တယ်။
+      စိတ်ဓာတ်ကျရတဲ့အချိန်တွေလည်း ရှိနိုင်တယ်။
+      ဒါပေမယ့် မမရဲ့အပြုံးလေးကို
+      မပျောက်စေချင်ဘူး။
+      ဘယ်လိုအချိန်မျိုးပဲရောက်ရောက်
+      ကိုယ့်ကိုယ်ကို ယုံကြည်ပြီး
+      ရှေ့ဆက်လျှောက်နိုင်ပါစေလို့
+      ဆုတောင်းပေးပါတယ်။
+    </p>
+
+    <p>
+      မွေးနေ့ဆိုတာ အသက်တစ်နှစ်ကြီးလာတာထက်
+      ဘဝရဲ့ အမှတ်တရအသစ်တစ်ခု
+      စတင်တဲ့နေ့လေးလို့ ထင်ပါတယ်။
+      ဒါကြောင့် ဒီနေ့ကစပြီး
+      မမရဲ့ Chapter အသစ်မှာ
+      အကောင်းဆုံးအရာတွေ၊ ပျော်ရွှင်စရာတွေ၊
+      အောင်မြင်မှုတွေ အများကြီး
+      ပါဝင်လာပါစေ။
+    </p>
+
+    <p>
+      ဒီ Surprise လေးကို ဖွင့်ကြည့်တဲ့အချိန်
+      မမရဲ့မျက်နှာပေါ်မှာ
+      အပြုံးလေးတစ်ချက်ပေါ်လာရင်
+      ဒီ Surprise လေးက အောင်မြင်ပြီလို့
+      ထင်ပါတယ်။
+      မမအတွက် အမှတ်တရလေးတစ်ခု
+      ဖြစ်စေချင်တဲ့စိတ်နဲ့
+      ဒီစာလေးကို ရေးထားတာပါ။
+    </p>
+
+    <p>
+      နောက်ဆုံးအနေနဲ့...
+      မမငွေခင်ရဲ့ ဘဝတစ်လျှောက်လုံး
+      ပျော်ရွှင်ခြင်း၊ အောင်မြင်ခြင်း၊
+      ကောင်းမွန်တဲ့အခွင့်အရေးတွေနဲ့
+      ပြည့်စုံပါစေ။
+      မမချစ်တဲ့သူတွေနဲ့လည်း
+      အမှတ်တရကောင်းတွေ အများကြီး
+      ဖန်တီးနိုင်ပါစေ။
+    </p>
+
+    <p style="
+      text-align:center;
+      font-size:22px;
+      font-weight:bold;
+      color:#2878a8;
+    ">
+
+      🎉 Happy Birthday to You, မမငွေခင် 🎂💙
+
+      <br>
+
+      ဒီနေ့ကစပြီး
+      ပိုလှတဲ့နေ့ရက်တွေကို
+      ပိုင်ဆိုင်နိုင်ပါစေ ✨
+
+    </p>
+
+
+    <div class="signature">
+
+      💙🫐
+
+      <br>
+
+      ချစ်ရတဲ့ ဘယ်ရီသီးလေးကနေ
+
+      <br>
+
+      မမငွေခင်အတွက်
+      အချစ်တွေအများကြီးနဲ့
+
+      <br>
+
+      ဆုတောင်းပေးလိုက်ပါတယ် 💙✨
+
+    </div>
+
+  </div>
+
+
+  <div class="footer">
+    Made with love for a special birthday 💙
+  </div>
+
 </div>
 
-<div class="photo-frame">
-  <img src="photo.jpg" alt="Happy Birthday မမငွေခင်">
-</div>
 
-<div class="letter">
-
-<h3>💌 ချစ်ရတဲ့ မမငွေခင်သို့ 💌</h3>
-
-<p>
-ဒီနေ့ဟာ မမငွေခင်အတွက် အရမ်းထူးခြားပြီး ပျော်ရွှင်စရာကောင်းတဲ့နေ့လေးတစ်နေ့ပါ။
-ဒီကမ္ဘာကြီးထဲကို မမငွေခင်ဆိုတဲ့ လူတစ်ယောက် ရောက်ရှိလာခဲ့တဲ့
-အမှတ်တရနေ့လေးလည်း ဖြစ်ပါတယ်။
-</p>
-
-<p>
-ဒီမွေးနေ့ကစပြီး မမရဲ့ဘဝမှာ ပျော်ရွှင်ခြင်းတွေ ပိုများလာပါစေ။
-စိတ်ညစ်စရာတွေ၊ ဝမ်းနည်းစရာတွေကလည်း တဖြည်းဖြည်းဝေးကွာသွားပြီး
-မမပြုံးတဲ့အချိန်တိုင်း စစ်မှန်တဲ့ပျော်ရွှင်မှုတွေနဲ့ ပြုံးနိုင်ပါစေ။
-</p>
-
-<p>
-မမလိုချင်တဲ့ အိပ်မက်တွေ အကောင်အထည်ဖော်နိုင်ပါစေ။
-ရည်မှန်းထားတဲ့ လမ်းကြောင်းတိုင်းမှာ အခက်အခဲတွေရှိလာရင်တောင်
-အရှုံးမပေးဘဲ ရဲရဲဝံ့ဝံ့ ကျော်ဖြတ်နိုင်တဲ့ အားအင်တွေ
-အမြဲတမ်းရှိနေပါစေ။
-</p>
-
-<p>
-ဒီနှစ်မှာ မမအတွက် အမှတ်တရကောင်းတွေ ပိုများလာပါစေ။
-မမျှော်လင့်ထားတဲ့ ပျော်ရွှင်မှုလေးတွေကိုလည်း
-နေ့တိုင်းလိုလို ကြုံတွေ့ရပါစေ။
-မမချစ်တဲ့သူတွေက မမဘေးနားမှာ အမြဲရှိနေပြီး
-မမကို တန်ဖိုးထားချစ်ခင်ပေးတဲ့ လူကောင်းတွေနဲ့သာ
-တွေ့ဆုံနိုင်ပါစေ။
-</p>
-
-<p>
-တစ်ခါတစ်လေ ဘဝမှာ ပင်ပန်းရတဲ့နေ့တွေရှိနိုင်တယ်။
-စိတ်ဓာတ်ကျရတဲ့အချိန်တွေလည်း ရှိနိုင်တယ်။
-ဒါပေမယ့် မမရဲ့အပြုံးလေးကို မပျောက်စေချင်ဘူး။
-ဘယ်လိုအချိန်မျိုးပဲရောက်ရောက်
-ကိုယ့်ကိုယ်ကို ယုံကြည်ပြီး
-ရှေ့ဆက်လျှောက်နိုင်ပါစေလို့ ဆုတောင်းပေးပါတယ်။
-</p>
-
-<p>
-မွေးနေ့ဆိုတာ အသက်တစ်နှစ်ကြီးလာတာထက်
-ဘဝရဲ့ အမှတ်တရအသစ်တစ်ခု စတင်တဲ့နေ့လေးလို့ ထင်ပါတယ်။
-ဒါကြောင့် ဒီနေ့ကစပြီး မမရဲ့ Chapter အသစ်မှာ
-အကောင်းဆုံးအရာတွေ၊ ပျော်ရွှင်စရာတွေ၊
-အောင်မြင်မှုတွေ အများကြီးပါဝင်လာပါစေ။
-</p>
-
-<p>
-ဒီစာလေးက အရမ်းကြီးမဟုတ်ပေမယ့်
-မမရဲ့ ဒီနေ့လေးကို နည်းနည်းလေးပဲဖြစ်ဖြစ်
-အမှတ်တရဖြစ်စေချင်တဲ့စိတ်နဲ့ ရေးထားတာပါ။
-ဒီ Website လေးကို ဖွင့်ပြီးတဲ့အချိန်
-မမရဲ့မျက်နှာပေါ်မှာ အပြုံးလေးတစ်ချက်ပေါ်လာရင်
-ဒီ Surprise လေးက အောင်မြင်ပြီလို့ ထင်ပါတယ်။
-</p>
-
-<p>
-နောက်ဆုံးအနေနဲ့...
-မမငွေခင်ရဲ့ ဘဝတစ်လျှောက်လုံး
-ကျန်းမာခြင်း၊ ပျော်ရွှင်ခြင်း၊ အောင်မြင်ခြင်းတွေနဲ့
-ပြည့်စုံပါစေ။
-ချစ်တဲ့သူတွေနဲ့လည်း အမြဲတမ်း ပျော်ရွှင်စွာ
-အမှတ်တရကောင်းတွေ ဖန်တီးနိုင်ပါစေ။
-</p>
-
-<p style="text-align:center;font-size:22px;font-weight:bold;color:#2878a8;">
-🎉 Happy Birthday to You, မမငွေခင် 🎂💙<br>
-ဒီနေ့ကစပြီး ပိုလှတဲ့နေ့ရက်တွေကို ပိုင်ဆိုင်နိုင်ပါစေ ✨
-</p>
-
-<div class="signature">
-💙🫐<br>
-ချစ်ရတဲ့ ဘယ်ရီသီးလေးကနေ<br>
-မမငွေခင်အတွက် အချစ်တွေအများကြီးနဲ့<br>
-ဆုတောင်းပေးလိုက်ပါတယ် 💙✨
-</div>
-
-</div>
-
-<div class="footer">
-Made with love for a special birthday 💙
-</div>
-
-</div>
-
+<!-- MUSIC -->
 <audio id="music" loop>
-  <source src="song.mp3" type="audio/mpeg">
+
+  <source
+    src="VID_20260905_202051_009.mp4"
+    type="video/mp4"
+  >
+
 </audio>
 
+
 <script>
+
 function openSurprise(){
-  document.getElementById("opening").style.opacity="0";
+
+  const opening =
+    document.getElementById("opening");
+
+  const main =
+    document.getElementById("main");
+
+  const music =
+    document.getElementById("music");
+
+
+  opening.style.opacity="0";
+
 
   setTimeout(function(){
-    document.getElementById("opening").style.display="none";
-    document.getElementById("main").style.display="block";
 
-    document.getElementById("music").play();
+    opening.style.display="none";
+
+    main.style.display="block";
+
+
+    /* MUSIC START */
+
+    music.play().catch(function(error){
+
+      console.log(
+        "Music could not start:",
+        error
+      );
+
+    });
+
+
+    /* FLOATING HEARTS */
 
     createHearts();
+
   },800);
+
 }
 
+
 function createHearts(){
+
   setInterval(function(){
-    const heart=document.createElement("div");
+
+    const heart =
+      document.createElement("div");
+
     heart.className="heart";
+
     heart.innerHTML="💙";
 
-    heart.style.left=Math.random()*100+"vw";
-    heart.style.animationDuration=(4+Math.random()*4)+"s";
+    heart.style.left =
+      Math.random()*100+"vw";
+
+    heart.style.animationDuration =
+      (4+Math.random()*4)+"s";
 
     document.body.appendChild(heart);
 
-    setTimeout(()=>{
+
+    setTimeout(function(){
+
       heart.remove();
+
     },8000);
+
   },700);
+
 }
+
 </script>
 
 </body>
-    </html>
+</html>
